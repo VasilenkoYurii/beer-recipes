@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { RotatingLines } from 'react-loader-spinner';
 import { useStore } from 'zustandStore/zustandStore';
 import { BeerItem } from 'components/BeerItem/BeerItem';
@@ -10,13 +10,7 @@ export const BeerList = () => {
   const navigate = useNavigate();
   const recipes = useStore(state => state.recipes);
 
-  const [selectedItemIds, setSelectedItemIds] = useState(
-    JSON.parse(localStorage.getItem('selectedItemIds')) || []
-  );
-
-  useEffect(() => {
-    localStorage.setItem('selectedItemIds', JSON.stringify(selectedItemIds));
-  }, [selectedItemIds]);
+  const [selectedItemIds, setSelectedItemIds] = useState([]);
 
   const handleItemClick = (recipe, e) => {
     e.preventDefault();
