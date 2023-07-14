@@ -11,7 +11,7 @@ export const BeerList = () => {
   const recipes = useStore(state => state.recipes);
 
   const [selectedItemIds, setSelectedItemIds] = useState(
-    JSON.parse(localStorage.getItem('selectedItemIds'))
+    JSON.parse(localStorage.getItem('selectedItemIds')) || []
   );
 
   useEffect(() => {
